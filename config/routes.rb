@@ -4,5 +4,6 @@ Skeleton::Application.routes.draw do
         omniauth_callbacks: "users/omniauth_callbacks"
       }
 
-  root :to => "welcome#index"
+  get '/login' => 'welcome#index'
+  root "main#index"
 end
