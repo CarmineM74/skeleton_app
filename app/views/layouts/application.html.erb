@@ -7,9 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p class='notice'><%= notice %></p>
-  <p class='alert'><%= alert %></p>
-<%= yield %>
-
+  <div id='wrap'>
+    <div class='container'>
+      <p class='notice'><%= notice %></p>
+      <p class='alert'><%= alert %></p>
+      <div class='page-header'>
+        <h1>SkeletonApp</h1>
+      </div>
+      <%= yield %>
+    </div>
+    <div id='push'></div>
+  </div>
+  <div id='footer'>
+    <div class='container'>
+      <p class='muted credit'>Example Rails + AngularJs skeleton application</p>
+    </div>
+  </div>
 </body>
 </html>
