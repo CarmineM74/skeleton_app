@@ -12,6 +12,11 @@ gem 'uuidtools'
 
 gem 'thin'
 
+gem 'angularjs-rails', '>=1.2.0.rc2'
+gem 'ngmin-rails'
+
+gem 'bootstrap-sass-rails'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 

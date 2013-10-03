@@ -26,6 +26,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         url: auth_hash['info']['urls']['Twitter']
       })
     end
+    sign_in user
     redirect_to '/'
   end
 end

@@ -26,7 +26,7 @@ private
     end
     Rails.logger.info "Request XHR?: #{request.format}"
     return failure if request.format.xhr?
-    redirect_to '/login' and return false
+    redirect_to '/' and return false
   end
 
 end
