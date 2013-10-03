@@ -1,4 +1,4 @@
-angular.module('skeletonApp',['ngRoute','ngResource'])
+angular.module('skeletonApp',['ngRoute','ngResource','ui.bootstrap','ui.bootstrap.datetimepicker'])
   .config ($routeProvider,$httpProvider) ->
 
     $httpProvider.defaults.headers.common['Accept'] = 'application/json'

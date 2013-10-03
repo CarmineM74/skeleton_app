@@ -6,12 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Skeleton" %></title>
     <%= stylesheet_link_tag "application" %>
+    <%= stylesheet_link_tag "datetimepicker.css" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     <div class="container">
       <div data-ng-view></div>
     </div> <!-- /container -->
+    <%= javascript_include_tag "moment.min.js" %>
     <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "ui-bootstrap-tpls-0.6.0.min.js" %>
+    <%= javascript_include_tag "datetimepicker.js" %>
   </body>
 </html>

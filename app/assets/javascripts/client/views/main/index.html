@@ -2,5 +2,14 @@
   <h3>Welcome!</h3>
   <button class='btn' type='button' ng-click='logout()'>Logout</button>
   <button class='btn' type='button' ng-click='info()'>Current user</button>
+  <div class='push'></div>
+  <div class='well'>
+    <div class="dropdown">
+      <a  class="dropdown-toggle" id="dropdown1" role="button" data-toggle="dropdown" data-target="#" href="#">Click here to show calendar: {{mydate | date:'dd-MM-yyyy HH:mm'}}</a>
+      <ul class="dropdown-menu" role="menu">
+        <datetimepicker data-ng-model="mydate" data-datetimepicker-config="{ dropdownSelector: '#dropdown1' }"/>
+      </ul>
+    </div>
+  </div>
 </div>
 
