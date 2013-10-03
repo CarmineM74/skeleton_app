@@ -1,9 +1,21 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :null_session
+  protect_from_forgery with: :exception
+  after_filter :set_csrf_for_angular
   
 private
+
+  def set_csrf_for_angular
+    cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
+  end
+
+  def verified_request?
+    csrf_token = request.headers['HTTP_X_XSRF_TOKEN']
+#    Rails.logger.info("RECEIVED X-XSRF-TOKEN: #{csrf_token}")
+#    Rails.logger.info("INTERNAL CSRF-TOKEN: #{form_authenticity_token}")
+    super || form_authenticity_token == csrf_token
+  end
 
   def failure(message = 'Authentication required', status = 401)
     warden.custom_failure!
@@ -13,20 +25,6 @@ private
         info: message,
         data: {}
       }
-  end
-
-  def authenticate_user_from_token!
-    Rails.logger.info "Authenticating from token ..."
-    authenticate_with_http_token do |token, options|
-      Rails.logger.info "Token: #{token} - Opts: #{options}"
-      @user = User.find_by_auth_token(token)
-      if @user && Devise.secure_compare(@user.auth_token,token)
-        sign_in @user, store: false
-      end
-    end
-    Rails.logger.info "Request XHR?: #{request.format}"
-    return failure if request.format.xhr?
-    redirect_to '/' and return false
   end
 
 end

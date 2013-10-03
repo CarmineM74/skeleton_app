@@ -1,9 +1,7 @@
 class WelcomeController < ApplicationController
-  before_filter :authenticate_user_from_token!, except: [:index]
   layout :choose_layout
 
   def index
-    headers['Authorization'] = "Token #{current_user.auth_token}" if user_signed_in?
   end
 
 private

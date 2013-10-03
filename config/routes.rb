@@ -7,11 +7,10 @@ Skeleton::Application.routes.draw do
 
   scope '/api' do
     devise_scope :user do
-      get 'sessions/current_user' => 'users/sessions#current_user'
+      get 'sessions/current_user' => 'users/sessions#current_user_info'
+      delete 'sessions' => 'users/sessions#destroy'
     end
   end
-
-  delete '/logout' => 'users/sessions#destroy'
 
   root 'welcome#index'
 end
