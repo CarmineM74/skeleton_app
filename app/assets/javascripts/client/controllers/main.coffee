@@ -1,10 +1,11 @@
 angular.module('skeletonApp')
-  .controller 'MainCtrl', ($log,$scope,SessionSvc) ->
+  .controller 'MainCtrl', ($log,$scope,$location,$window,SessionSvc) ->
     ctrlname = '[MainCtrl]'
     $log.log(ctrlname + ': Initializing')
 
     $scope.$on('event:logout', -> alert('logout'))
     $scope.$on('event:current_user_info:success', -> $log.log("Current user: " + JSON.stringify(SessionSvc.currentUser)))
+    $scope.$on('event:unauthorized', -> $scope.unauthorizedAction())
 
     $scope.logout = ->
       $log.log('Logging out ...')
@@ -14,3 +15,5 @@ angular.module('skeletonApp')
       $log.log(ctrlname + ": fetching current user info ...")
       SessionSvc.current_user_info()
 
+    $scope.unauthorizedAction = ->
+      $window.location.href = '/'
