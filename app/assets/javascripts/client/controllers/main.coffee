@@ -3,15 +3,19 @@ angular.module('skeletonApp')
     ctrlname = '[MainCtrl]'
     $log.log(ctrlname + ': Initializing')
 
-    $scope.$on('event:logout', -> alert('logout'))
+    $scope.$on('event:logout', -> $scope.logoutCompleted())
     $scope.$on('event:current_user_info:success',-> $scope.currentUserRetrieved())
     $scope.$on('event:unauthorized', -> $scope.unauthorizedAction())
 
     $scope.mydate = "" 
 
     $scope.logout = ->
-      $log.log('Logging out ...')
+      $log.log(ctrlname + ': Logging out ...')
       SessionSvc.logout()
+
+    $scope.logoutCompleted = ->
+      $log.log(ctrlname + ': Logout completed. Redirecting to / ...')
+      $window.location.href = '/'
 
     $scope.info = ->
       $log.log(ctrlname + ": fetching current user info ...")

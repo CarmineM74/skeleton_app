@@ -4,7 +4,7 @@ angular.module('skeletonApp')
     $log.log(svcname + ': Initializing')
 
     session = $resource('/api/sessions',{},
-      {current_user: {url: '/api/sessions/current_user', method: 'GET', isArray: false}}
+      {current_user: {url: '/api/current_user', method: 'GET', isArray: false}}
     )
 
     svc = {

@@ -7,6 +7,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     auth = Authorization.find_by_provider_and_uid(provider,uid)
     if auth
       user = auth.user
+      user.ensure_authentication_token
+      user.save
     else
       unless user = User.find_by_name(name)
         user = User.create({

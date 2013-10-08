@@ -7,7 +7,7 @@ Skeleton::Application.routes.draw do
 
   scope '/api' do
     devise_scope :user do
-      get 'sessions/current_user' => 'users/sessions#current_user_info'
+      get '/current_user' => 'users#current_user_info'
       delete 'sessions' => 'users/sessions#destroy'
     end
   end

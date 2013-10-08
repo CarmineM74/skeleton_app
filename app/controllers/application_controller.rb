@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
   after_filter :set_csrf_for_angular
   
 private
@@ -25,6 +25,14 @@ private
         info: message,
         data: {}
       }
+  end
+
+  def reject_unauthorized_request!
+#    Rails.logger.info("User Session: #{user_session}")
+    Rails.logger.info("Current User: #{current_user}")
+    Rails.logger.info("User signed in? #{user_signed_in?}")
+    return failure unless user_signed_in?
+    true
   end
 
 end
