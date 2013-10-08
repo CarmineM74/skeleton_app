@@ -1,7 +1,7 @@
 angular.module('skeletonApp.services',[])
   .factory 'SessionSvc', ($log,$resource,$rootScope,$location) ->
-    svcname = '[SessionSvc]'
-    $log.debug(svcname + ': Initializing')
+    $log = $log.getInstance('SessionSvc')
+    $log.debug('Initializing')
 
     session = $resource('/api/sessions',{},
       {current_user: {url: '/api/current_user', method: 'GET', isArray: false}}
@@ -23,10 +23,10 @@ angular.module('skeletonApp.services',[])
       logout: ->
         session.delete(
           (data) ->
-            $log.debug(svcname + ': LOGOUT COMPLETED')
+            $log.debug('LOGOUT COMPLETED')
             $rootScope.$broadcast('event:logout')
           ,(response) ->
-            $log.debug(svcname + ': LOGOUT FAILED')
+            $log.debug('LOGOUT FAILED')
             $rootScope.$broadcast('event:logout_failed')
         )
         svc.currentUser = undefined
