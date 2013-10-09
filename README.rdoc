@@ -1,28 +1,25 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a very basic skeleton application to test and study integration between:
 
-Things you may want to cover:
+* Rails (4.x)
+* AngularJs 1.2.0-rc.2
 
-* Ruby version
+Server side features implemented so far are:
 
-* System dependencies
+* Authentication via OAuth-Twitter leveraging devise gem (success and failure paths)
+* Authenticated user information retrieval 
+* Authenticated user session expiry (conifg/initializers/devise.rb contains session's timeout default)
+* Rails route's partitioning (API and non API)
+* Basic SSL usage with server certificate and key (signed via a custom tailored CA)
 
-* Configuration
+Client side features implemented so far are:
 
-* Database creation
+* Modularized AngularJs application, with namespaced components
+* MainCtrl: controller with no other purposes to login/logout and get current user's info
+  It also shows how to intercept application wide events.
+* SessionSvc: service which is in charge of all session's related activities
+* Log service decorator (utilities.decorators.log) shows how to decorate the default log service
+  to include timestamp and classes information. (Credits go to: http://solutionoptimist.com/2013/10/07/enhance-log-using-angularjs-decorators/)
+* Authentication interceptor: It intercepts 401 responses from server broadcasting events (on the rootScope) accordingly
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
