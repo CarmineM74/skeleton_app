@@ -31,5 +31,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     sign_in user
     redirect_to '/'
   end
+
+  def failure
+    #Rails.logger.info "Params: #{params}"
+    #Rails.logger.info "ENV: #{request.env}"
+    redirect_to '/', alert: request.env['omniauth.error.type'] 
+  end
+
+
 end
 
