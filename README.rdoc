@@ -26,6 +26,8 @@ Client side features implemented so far are:
 
 ==Note:
 This repo will hardly see any other commits, since I switched to an unembedded "flavour" for client side code.
-There's a repo with this toy application: skeleton_app_with_client which will see features added.
+There's a repo with this toy application: skeleton_app_with_client which will have features added.
+
+Please, remember that all this is an ongoing experiment and there's obiviously no production ready code.
 
 Hope you'll find it useful. Feel free to get in touch with me if you like.
