@@ -24,7 +24,7 @@ Client side features implemented so far are:
 * Authentication interceptor: It intercepts 401 responses from server broadcasting events (on the rootScope) accordingly
 
 
-Note:
+==Note:
 This repo will hardly see any other commits, since I switched to an unembedded "flavour" for client side code.
 There's a repo with this toy application: skeleton_app_with_client which will see features added.
 
